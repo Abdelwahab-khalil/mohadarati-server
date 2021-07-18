@@ -1,0 +1,266 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0", 
+      "title": "Mohadarati Swagger",
+      "description": "Mohadarati Api swagger Documentation",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:8000",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Mohadarati",
+        "description": "API for Mohadarati in the system"
+      }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/api": {
+          "get": {
+            "tags": ["Mohadaratis"],
+            "summary": "Get all Mohadarati in system",
+            "responses": {
+              "200": {
+                "description": "OK",
+                "schema": {
+                  "$ref": "#/definitions/Mohadarati"
+                }
+              }
+            }
+          }
+        },
+        "/admis": {
+            "get": {
+              "tags": ["Mohadaratis"],
+              "summary": "Get all Mohadarati admis in system",
+              "responses": {
+                "200": {
+                  "description": "OK",
+                  "schema": {
+                    "$ref": "#/definitions/Mohadarati"
+                  }
+                }
+              }
+            }
+        },
+        "/after": {
+            "get": {
+              "tags": ["Mohadaratis"],
+              "summary": "Get all future Mohadarati in system",
+              "responses": {
+                "200": {
+                  "description": "OK",
+                  "schema": {
+                    "$ref": "#/definitions/Mohadarati"
+                  }
+                }
+              }
+            }
+        },
+        "/befor": {
+            "get": {
+              "tags": ["Mohadaratis"],
+              "summary": "Get all past Mohadarati in system",
+              "responses": {
+                "200": {
+                  "description": "OK",
+                  "schema": {
+                    "$ref": "#/definitions/Mohadarati"
+                  }
+                }
+              }
+            }
+        },
+        "/day": {
+            "get": {
+              "tags": ["Mohadaratis"],
+              "summary": "Get all Mohadarati of today in system",
+              "responses": {
+                "200": {
+                  "description": "OK",
+                  "schema": {
+                    "$ref": "#/definitions/Mohadarati"
+                  }
+                }
+              }
+            }
+        },
+        "/week": {
+            "get": {
+              "tags": ["Mohadaratis"],
+              "summary": "Get all Mohadarati of week in system",
+              "responses": {
+                "200": {
+                  "description": "OK",
+                  "schema": {
+                    "$ref": "#/definitions/Mohadarati"
+                  }
+                }
+              }
+            }
+        },
+        "/month": {
+            "get": {
+              "tags": ["Mohadaratis"],
+              "summary": "Get all Mohadarati of month in system",
+              "responses": {
+                "200": {
+                  "description": "OK",
+                  "schema": {
+                    "$ref": "#/definitions/Mohadarati"
+                  }
+                }
+              }
+            }
+        },
+        "/prof": {
+            "get": {
+              "tags": ["Mohadaratis"],
+              "summary": "Get all Mohadarati of fkih in system",
+              "parameters": [
+                {
+                  "name": "mohadarati",
+                  "in": "body",
+                  "description": "Search mohadarati by fkih prof",
+                  "schema": {
+                    "$ref": "#/definitions/Mohadarati"
+                  }
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "OK",
+                  "schema": {
+                    "$ref": "#/definitions/Mohadarati"
+                  }
+                }
+              }
+            }
+          },
+          "/add": {
+            "post": {
+              "tags": ["Mohadaratis"],
+              "description": "Create new Mohadarati in system",
+              "parameters": [
+                {
+                  "name": "mohadarati",
+                  "in": "body",
+                  "description": "Mohadarati that we want to create",
+                  "schema": {
+                    "$ref": "#/definitions/Mohadarati"
+                  }
+                }
+              ],
+              "produces": ["application/json"],
+              "responses": {
+                "200": {
+                  "description": "New Mohadarati is created",
+                  "schema": {
+                    "$ref": "#/definitions/Mohadarati"
+                  }
+                }
+              }
+            }
+          },
+          "/update/{id}": {
+            "put": {
+              "summary": "Update mohadarati with give ID",
+              "tags": ["Mohadaratis"],
+              "parameters": [
+                {
+                  "name": "mohadarati",
+                  "in": "body",
+                  "description": "Mohadarati with new values of properties",
+                  "schema": {
+                    "$ref": "#/definitions/updateMohadarati"
+                  }
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "User is updated",
+                  "schema": {
+                    "$ref": "#/definitions/User"
+                  }
+                }
+              }
+            }
+          }
+      },
+      
+      "definitions": {
+        "prof":{
+            "required":["prof"],
+            "properties": {
+                "prof": {
+                "type": "string"
+                }
+            }
+        },
+        "Mohadarati": {
+          "required": ["title", "description", "prof", "cat", "picture", "lien", "date"],
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "description": {
+                "type": "string"
+              },
+            "prof": {
+                "type": "string"            
+            },
+            "cat": {
+                "type": "string"            
+            },
+            "picture": {
+                "type": "string"            
+            },
+            "lien": {
+                "type": "string"            
+            },
+            "date": {
+                "type": "string"            
+            }
+          }
+        },
+        "updateMohadarati": {
+            "required": ["id","title", "description", "prof", "cat", "picture", "lien", "date"],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                  "type": "string"
+                },
+              "prof": {
+                  "type": "string"            
+              },
+              "cat": {
+                  "type": "string"            
+              },
+              "picture": {
+                  "type": "string"            
+              },
+              "lien": {
+                  "type": "string"            
+              },
+              "date": {
+                  "type": "string"            
+              }
+            }
+          },
+        "Mohadaratis": {
+          "type": "array",
+          "$ref": "#/definitions/Mohadarati"
+        }
+      }
+}
